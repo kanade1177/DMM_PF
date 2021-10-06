@@ -17,6 +17,10 @@
 ボランティア団体側(個人)は日々の活動内容の投稿。他の団体の活動内容のリサーチ。非団体側は自分の地域の団体を調べることができ、コメントなどで利用前に事前確認も可能。
 
 ## 設計書
+ER図　https://drive.google.com/file/d/13JGhu0VUaba5EQ750qBT6QP49Zl3rSZ_/view?usp=sharing
+ワイヤーフレーム　https://drive.google.com/file/d/1dChA4SbG_5C3og-cGCVKVGpZ9zSIgBrV/view?usp=sharing
+詳細設計　https://docs.google.com/spreadsheets/d/1MpkDq46lp4LYkvKxlyNiachGqgn-zBzlJt1_BN57c-Q/edit?usp=sharing
+テーブル提議書　https://docs.google.com/spreadsheets/d/19CANcUY4KOs152DOgvcxiiNvJ1tLTcyQLrYavLNWG-k/edit?usp=sharing
 
 
 ## チャレンジ要素一覧
