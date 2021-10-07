@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_06_081511) do
+ActiveRecord::Schema.define(version: 2021_10_07_131242) do
 
-  create_table "posts", force: :cascade do |t|
+  create_table "tweets", force: :cascade do |t|
     t.integer "user_id"
     t.integer "category_id"
     t.string "title"
     t.text "body"
-    t.integer "post_image_id"
+    t.string "post_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -28,9 +28,9 @@ ActiveRecord::Schema.define(version: 2021_10_06_081511) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
     t.string "introduction"
     t.text "profile_image_id"
     t.index ["email"], name: "index_users_on_email", unique: true

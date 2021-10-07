@@ -1,2 +1,12 @@
 <h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+
+<h2>名前</h2>
+<%= @user.name %>
+
+ <%= @tweets.each do | tweet | %>
+      
+      <%= link_to tweet_path(tweet.id) do %>
+       <%= tweet.title %>
+      <% end %>
+      <%= tweet.body %>
+ <% end %>

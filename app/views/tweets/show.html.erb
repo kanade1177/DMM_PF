@@ -1,0 +1,10 @@
+<%= attachment_image_tag @tweet, :post_image, :fill, 300, 300, format: 'jpeg' %>
+
+<h2>タイトル</h2>
+<p><%= @tweet.title %></p>
+
+<h2>投稿内容</h2>
+<p><%= @tweet.body %></p>
+
+<h2>投稿者</h2>
+<p><%= @user.name %></p>

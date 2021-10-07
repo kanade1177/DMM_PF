@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
-    @post = Post.new
+    @tweet = Tweet.new
   end
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
-    @post = Post.new
+     @tweets = @user.tweets
+    # @tweet = Tweet.new
   end
 
   def edit
@@ -15,8 +15,8 @@ class UsersController < ApplicationController
 
   def update
   end
-  
+
   def user_params
     params.require(:user).permit(:name, :profile_image_id, :introduction)
-  end  
+  end
 end

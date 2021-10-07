@@ -1,0 +1,32 @@
+<h1>Tweets#index</h1>
+
+<div class="col-md-8 offset-md-1">
+ <h2>Tweets</h2>
+  <table class="table table-hover table-invers">
+   <thead>
+    <tr>
+     <th>Name</th>
+     <th>Title</th>
+     <th>Opinion</th>
+     <th colspan="3"></th>
+    </tr>
+   </thead>
+   <%= @tweets.each do | tweet | %>
+   <tbody>
+    <tr>
+     <td>
+      <%= tweet.user.name %>
+     </td>
+     <td>
+      <%= link_to tweet_path(tweet.id) do %>
+       <%= tweet.title %>
+      <% end %>
+     </td>
+     <td>
+      <%= tweet.body %>
+     </td>
+    </tr>
+   </tbody>
+   <% end %>
+  </table>
+
