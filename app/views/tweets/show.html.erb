@@ -1,10 +1,52 @@
-<%= attachment_image_tag @tweet, :post_image, :fill, 300, 300, format: 'jpeg' %>
+<div class="container">
+ <div class="row">
+  <div class="col-md-3">
+   <%= render "users/user_info", user: @user %>
+  </div>
+  <div class="col-md-4">
+    <%= attachment_image_tag @tweet, :post_image, :fill, 300, 300, format: 'jpeg' %>
+  </div>
+  <div class="col-md-5">
+    <h2>Tweet</h2>
 
-<h2>タイトル</h2>
-<p><%= @tweet.title %></p>
+    <table class="table">
+     <thead>
+      <tr>
+        <th>Title</th>
+        <th>Erea</th>
+        <th>category</th>
+      </tr>
+     <tbody>
+      <tr>
+       <td>
+        <%= @tweet.title %>
+       </td>
+       <td>
+        <%= @tweet.erea.name %>
+       </td>
+       <td>
+        <%= @tweet.category.name %>
+       </td>
+       <td>
+        <i class="far fa-clock clock-icon"></i><%= time_ago_in_words(@tweet.created_at) %>前
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <div class="row">
+     <div class="col-md-4">
+     <p><%= @tweet.body %></p>
 
-<h2>投稿内容</h2>
-<p><%= @tweet.body %></p>
+     <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= @tweet.title %></h5>
+        <p class="card-text"><%= @tweet.body %></p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+     </div>
 
-<h2>投稿者</h2>
-<p><%= @user.name %></p>
+    </div>
+
+  </div>
+ </div>
+</div>

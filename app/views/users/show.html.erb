@@ -1,12 +1,42 @@
 <h1>Users#show</h1>
 
-<h2>名前</h2>
-<%= @user.name %>
+<div class="container">
+ <div class="row">
+  <div class="col-md-3">
+   <%= render "users/user_info", user: @user %>
+  </div>
+  <div class="col-md-8 offset-md-1">
+  <h2>Tweet</h2>
 
- <%= @tweets.each do | tweet | %>
-      
-      <%= link_to tweet_path(tweet.id) do %>
-       <%= tweet.title %>
-      <% end %>
-      <%= tweet.body %>
- <% end %>
+   <table class="table">
+    <thead>
+     <tr>
+      <th>Title</th>
+      <th>Erea</th>
+      <th>Category</th>
+      <th colspan="3"></th>
+     </tr>
+    </thead>
+    <% @tweets.each do | tweet | %>
+    <tbody>
+     <tr>
+      <td>
+       <%= link_to tweet_path(tweet.id) do %>
+        <%= tweet.title %>
+       <% end %>
+      </td>
+      <td>
+       <%= tweet.erea.name %>
+      </td>
+      <td>
+       <%= tweet.category.name %>
+      </td>
+      <td>
+       <i class="far fa-clock clock-icon"></i><%= time_ago_in_words(tweet.created_at) %>前
+      </td>
+     </tr>
+    </tbody>
+   <% end %>
+  </div>
+ </div>
+</div>
