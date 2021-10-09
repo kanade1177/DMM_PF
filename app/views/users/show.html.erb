@@ -4,11 +4,18 @@
  <div class="row">
   <div class="col-md-3">
    <%= render "users/user_info", user: @user %>
+   <% if current_user != @user %>
+    <% if @user.followed_by?(current_user) %>
+     <%=link_to "フォロー済み", user_relationships_path(@user.id), method: :delete %>
+    <% else %>
+     <%=link_to "フォローする", user_relationships_path(@user.id), method: :post %>
+    <% end %>
+   <% end %>
   </div>
   <div class="col-md-8 offset-md-1">
   <h2>Tweet</h2>
 
-   <table class="table">
+   <table class="table table-borderless">
     <thead>
      <tr>
       <th>Title</th>
@@ -31,6 +38,9 @@
       <td>
        <%= tweet.category.name %>
       </td>
+      <td id="favorite_buttons_<%= tweet.id %>">
+        <%= render "favorites/favorite", tweet: tweet %>
+       </td>
       <td>
        <i class="far fa-clock clock-icon"></i><%= time_ago_in_words(tweet.created_at) %>前
       </td>

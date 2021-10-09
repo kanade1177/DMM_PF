@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
 
 
- 
 
-  get 'favorites/create'
-  get 'favorites/destroy'
+
+
   devise_for :users
   root to: "homes#top"
 
@@ -16,5 +15,9 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
 
-  resources :users
+  resources :users do
+    resource :relationships, only: [:create, :destroy]
+    get :follows, on: :member
+    delete :followers, on: :member
+  end
 end
