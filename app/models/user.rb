@@ -7,6 +7,7 @@ class User < ApplicationRecord
    attachment :profile_image
    has_many :tweets
    has_many :favorites
+   has_many :comments
 
   # 自分がフォローしているユーザーとの関係
    has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id, dependent: :destroy

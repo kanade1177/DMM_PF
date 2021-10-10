@@ -28,7 +28,7 @@
         <%= @tweet.category.name %>
        </td>
        <td>
-        <i class="far fa-clock clock-icon"></i><%= time_ago_in_words(@tweet.created_at) %>前
+        <i class="far fa-clock clock-icon"><%= time_ago_in_words(@tweet.created_at) %>前</i>
        </td>
       </tr>
      </tbody>
@@ -37,16 +37,26 @@
      <div class="col-md-4">
      <p><%= @tweet.body %></p>
 
-     <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title"><%= @tweet.title %></h5>
-        <p class="card-text"><%= @tweet.body %></p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
      </div>
-
     </div>
-
-  </div>
+    <div class="row">
+     <ul>
+      <li class="comment-create">
+       <h7 class="test-left title">コメント</h7>
+      </li>
+      <li>
+       <div id="comments_area">
+       <%= render partial: "comments/index", locals: { commetns: @comments, tweet: @tweet } %>
+       </div>
+      </li>
+     </ul>
+     <hr>
+     <% if user_signed_in? %>
+      <div class="comment-create">
+       <h5 class="test-left">コメント投稿</h5>
+        <%= render partial: "comments/form", locals: { comment: @comment, tweet: @tweet } %>
+      </div>
+     <% end %>
+    </div>
  </div>
 </div>

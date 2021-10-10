@@ -1,0 +1,59 @@
+<!--新規投稿２件を表示-->
+<%= tweet.comments.count %>件のコメント
+<h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る....</h6>
+<ul>
+<% tweet.comments.first(2).each do | comment | %>
+ <% unless comment.id.nil? %>
+  <li class="comment-container container-first">
+    <div class="comment-box">
+      <div calss="comment-avatar">
+        <%= attachment_image_tag comment.user, :profile_image, class:"comment-image", size: "40x40" %>
+      </div>
+      <div class="commet-text">
+        <p><%= link_to "@#{comment.user.name}",user_path(comment.user.id) %></p>
+        <div class="comment-entry">
+          <%= comment.content %>
+          <% if comment.user == current_user %>
+           <%= link_to tweet_comment_path(comment.tweet_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
+            <i class="fas fa-trash" style="coler: black;"></i>
+           <% end %>
+          <% end %>
+        </div>
+        <span class="comment-date pull-right far fa-clock clock-icon">
+          <%#= time_ago_in_words(@comment.created_at) %>前
+        </span>
+      </div>
+    </div>
+  </li>
+  <% end %>
+<% end %>
+</ul>
+
+<!--２件以降を表示(もっと見るを押すと出てくる)-->
+<ul class="collapse" id="collapseExample">
+  <% if tweet.comments.count >= 3 %>
+    <% tweet.comments.offset(2).each do | comment | %>
+      <li class="comment-container container-more">
+        <div class="comment-box">
+          <div calss="comment-avatar">
+           <%= attachment_image_tag comment.user, :profile_image, class:"comment-image", size: "40x40" %>
+          </div>
+          <div class="commen-text">
+            <p><%= link_to "@#{comment.user.name}", user_path(comment.user.id) %></p>
+            <div class="comment-entry">
+              <%= comment.content %>
+              <% if comment.user == current_user %>
+               <%= link_to tweet_comment_path(comment.tweet_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
+                <i class="fas fa-trash" style="color: black;" ></i>
+               <% end %>
+              <% end %>
+            </div>
+            <span class="comment-date pull-right">
+              <%= comment.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
+            </span>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
