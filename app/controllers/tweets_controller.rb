@@ -4,7 +4,7 @@ class TweetsController < ApplicationController
   end
 
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.all.order(created_at: :desc)
   end
 
   def show
@@ -16,16 +16,23 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweet = Tweet.new(post_params)
+    @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
     @tweet.save
     redirect_to tweets_path
   end
 
   def edit
+    @tweet = Tweet.find(params[:id])
   end
 
   def update
+   @tweet = Tweet.find(params[:id])
+    if @tweet.update(tweet_params)
+      redirect_to tweet_path(@tweet.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -33,7 +40,7 @@ class TweetsController < ApplicationController
 
   private
 
-    def post_params
+    def tweet_params
       params.require(:tweet).permit(:title, :body, :post_image, :category_id, :erea_id)
     end
 
