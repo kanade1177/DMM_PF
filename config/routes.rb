@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
 
-
-
-
-
-  get 'comments/create'
-  get 'comments/destroy'
   devise_for :users
   root to: "homes#top"
 
@@ -23,4 +17,7 @@ Rails.application.routes.draw do
     get :follows, on: :member
     delete :followers, on: :member
   end
+  
+  resources :notifications, only: [:index, :destroy]
+  
 end
