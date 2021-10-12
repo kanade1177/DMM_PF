@@ -1,3 +1,4 @@
+<!--元々のやつ-->
 <% if current_user != user %>
  <div id="follow_form">
   <% if user.followed_by?(current_user) %>
@@ -7,3 +8,5 @@
   <% end %>
  </div>
 <% end %>
+
+

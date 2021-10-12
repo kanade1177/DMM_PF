@@ -20,6 +20,15 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
+            <!--追加-->
+            <li class="nav-item">
+               <% if unchecked_notifications.any? %>
+                 <li><%= link_to "Notice",notifications_path, class: "btn btn-light fas fa-bell",style: "color:tomato;"%>
+              <% else %>
+                 <li><%= link_to "Notice",notifications_path, class: "btn btn-light fas fa-check"%>
+              <% end %>
+            </li>
+            <!--ここまで-->
             <li class="nav-item">
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
             </li>

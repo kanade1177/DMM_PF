@@ -1,15 +1,13 @@
-<!--<h1>Notifications#index</h1>-->
-
-<!--<h3 class="text-center">通知</h3>-->
-
-<!--  <#% if @notifications.exists? %>-->
-<!--    <#%= link_to "通知削除", notification_path(@notifications), method: :delete, class: "fas fa-trash" %>-->
-<!--    <div class="notification-index">-->
-      <%#= render "notifications/notification", comment: @comment %>
-<!--      <#% @notification.each do |notification| %>-->
-<!--       <#%= notification_form(notification) %>-->
-<!--      <#% end %>-->
-<!--    </div>-->
-<!--  <#% else %>-->
-<!--    <p>通知はありません</p>-->
-<!--  <#% end %>-->
+<div class="container">
+    <div class='row justify-content-center mx-auto'>
+        <div class="notification_box">
+            <h4 class="text-center"><i class="fas fa-bell"></i>通知</h4>
+             <p class="text-right"><%= link_to "全削除",notification_path(@notifications), method: :delete,class:"btn btn-light fas fa-trash" %></p>
+        <% if @notifications.exists? %>
+        <%= render @notifications %>
+        <% else %>
+        <p>通知はありません</p>
+        <% end %>
+        </div>
+    </div>
+</div>
