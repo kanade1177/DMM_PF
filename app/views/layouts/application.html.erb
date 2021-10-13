@@ -23,9 +23,9 @@
             <!--追加-->
             <li class="nav-item">
                <% if unchecked_notifications.any? %>
-                 <li><%= link_to "Notice",notifications_path, class: "btn btn-light fas fa-bell",style: "color:tomato;"%>
+                 <li><%= link_to "Notice",notifications_path, class: " fas fa-bell nav-link text-dark",style: "color:tomato;"%>
               <% else %>
-                 <li><%= link_to "Notice",notifications_path, class: "btn btn-light fas fa-check"%>
+                 <li><%= link_to "Notice",notifications_path, class: " fas fa-check nav-link text-dark"%>
               <% end %>
             </li>
             <!--ここまで-->
@@ -53,5 +53,7 @@
     </header>
     <main class="mb-auto">
     <%= yield %>
+
+    <%= javascript_include_tag "application" %>
     </main>
 </html>

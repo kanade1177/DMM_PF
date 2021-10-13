@@ -13,12 +13,18 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-    resource :relationships, only: [:create, :destroy]
+    #試してるやつ
+    # member do
+    #   get :following, :followers
+    # end
     #元々のやつ
+    resource :relationships, only: [:create, :destroy]
     get :follows, on: :member
     delete :followers, on: :member
 
    end
+  resources :relationships, only: [:create, :destroy]
+
 
   resources :notifications, only: [:index, :destroy]
 

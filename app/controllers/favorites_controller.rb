@@ -2,11 +2,11 @@ class FavoritesController < ApplicationController
   def create
     @tweet = Tweet.find(params[:tweet_id])
     favorite = current_user.favorites.new(tweet_id: @tweet.id)
-    favorite.save
+    if favorite.save
     #追加
-    # tweet = tweet.find(params[:tweet_id])
-    # tweet.create_notification_favorite!(current_user)
-
+      @tweet = favorite.tweet
+      @tweet.create_notification_favorite!(current_user)
+    end
 
   end
 

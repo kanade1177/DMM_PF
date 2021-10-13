@@ -1,34 +1,39 @@
 <h1>Users#edit</h1>
-
+<%= form_with model: @user, local:true do |f| %>
 <body>
  <main>
   <div class="container">
-   <div class="row">
-    <div class="col-sm12 col-md-8 col-lg-5 px-5 px-xm-0 max-auto ">
+   <h2 class="fas fa-users-cog">登録情報編集</h2>
 
-     <%= form_with model: @user, local:true do |f| %>
-      <div class="form-group">
-       <label>Name</label>
-       <%= f.text_field :name %>
+   <!--<div class="row">-->
+   <!-- <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-xm-0 max-auto ">-->
+
+     <%#= form_with model: @user, local:true do |f| %>
+      <div class="form-inline form-group row mt-5">
+       <!--<label>Name</label>-->
+       <%= f.label :"アカウント名・団体名", class: "col-3 control-label" %>
+       <%= f.text_field :name, autofocus: true, class: "col-sm-7 form-control", :placeholder =>"アカウント名・団体名など" %>
       </div>
 
-      <div class="form-group">
-        <label>Image</label>
+      <div class="form-inline form-group row mt-5">
+        <%= f.label :"アカウント画像", class: "col-3 control-label" %>
         <%= f.attachment_field :profile_image %>
       </div>
 
-      <div class="form-group">
-       <label>Introduction</label>
-       <%= f.text_field :introduction, class: "form-control" %>
+      <div class="form-inline form-group row mt-5">
+       <%= f.label :"紹介文", class: "col-3 control-label" %>
+       <%= f.text_area :introduction, class: "col-sm-7 form-control", id: "input-text", :placeholder =>"160字以内" %>
+       <p id="counter">0文字</p>
       </div>
 
-      <div class="form-group">
-       <%= f.submit "Update User", class: "btn btn-secondary" %>
+      <div class=" form-group row mt-5">
+       <%= f.submit "Update User", class: "col-sm7 btn btn-secondary" %>
       </div>
 
-     <% end %>
-    </div>
-   </div>
+     <%# end %>
+   <!-- </div>-->
+   <!--</div>-->
   </div>
  </main>
 </body>
+<% end %>

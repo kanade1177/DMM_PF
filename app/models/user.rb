@@ -29,17 +29,42 @@ class User < ApplicationRecord
      passive_relationships.find_by(following_id: user.id).present?
    end
 
-
-
-
-   # def create_notification_follow!(current_user)
-   #  temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ",current_user.id, id, "follow"])
-   #  if temp.blank?
-   #    notification = current_user.active_notifications.new(
-   #      visited_id: id,
-   #      action: "follow"
-   #    )
-   #    notification.save if notification.valid?
-   #  end
+   # 試してるやつ ここから
+   # def following?(user)
+   #   following_relationships.find_by(following_id: user.id)
    # end
+
+   # def follow(user)
+   #  following_relationships.create!(following_id: user.id)
+   # end
+
+   # def unfollow(user)
+   #  following_relationships.find_by(following_id: user.id).destroy
+   # end
+
+   # def following?(user)
+   #  following_user.include?(user)
+   # end
+   #ここまで
+   
+   #お試し２
+   
+
+
+   def create_notification_follow!(current_user)
+    temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ?", current_user.id, id, "follow"])
+    if temp.blank?
+     notification = current_user.active_notifications.new(
+      visited_id: id,
+      action: "follow"
+      )
+      notification.save if notification.valid?
+    end
+   end
+
+
+
+
+
+
 end

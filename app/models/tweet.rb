@@ -20,14 +20,29 @@ class Tweet < ApplicationRecord
       notification = current_user.active_notifications.new(
           tweet_id: id,
           visited_id: user_id,
-          action: "tweet"
+          action: "comment"
         )
       if notification.visiter_id == notification.visited_id
         notification.checked = true
       end
       notification.save if notification.valid?
-      
+
   end
 
-  
+  #いいね通知
+  def create_notification_favorite!(current_user)
+    temp = Notification.where(["visiter_id = ? and visited_id = ? and tweet_id = ? and action = ?", current_user.id, user_id, id, "favorite"])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        tweet_id: id,
+        visited_id: user_id,
+        action: "favorite"
+        )
+      if notification.visiter_id == notification.visited_id
+        notification.checked = true
+      end
+      notification.save if notification.valid?
+    end
+  end
+
 end
