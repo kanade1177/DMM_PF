@@ -5,9 +5,10 @@ class RelationshipsController < ApplicationController
     # binding.pry
     if follow.save
     #後から追加
-      @user = User.find(params[:following_id])
-      current_user.id = following_id
+      @user = User.find(params[:user_id])
+      # current_user.id = following_id
       @user.create_notification_follow!(current_user)
+
     end
     #元々のやつ
     redirect_to request.referer

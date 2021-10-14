@@ -29,28 +29,6 @@ class User < ApplicationRecord
      passive_relationships.find_by(following_id: user.id).present?
    end
 
-   # 試してるやつ ここから
-   # def following?(user)
-   #   following_relationships.find_by(following_id: user.id)
-   # end
-
-   # def follow(user)
-   #  following_relationships.create!(following_id: user.id)
-   # end
-
-   # def unfollow(user)
-   #  following_relationships.find_by(following_id: user.id).destroy
-   # end
-
-   # def following?(user)
-   #  following_user.include?(user)
-   # end
-   #ここまで
-   
-   #お試し２
-   
-
-
    def create_notification_follow!(current_user)
     temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ?", current_user.id, id, "follow"])
     if temp.blank?
@@ -62,8 +40,19 @@ class User < ApplicationRecord
     end
    end
 
-
-
+   def self.looks(search, word)
+    if search == "perfect_match"
+      @user = User.where("name LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @user = User.where("name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @user = User.where("name LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @user = User.where("name LIKE?","%#{word}%")
+    else
+      @user = User.all
+    end
+   end 
 
 
 

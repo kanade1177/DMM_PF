@@ -19,6 +19,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
+              <li><%= render "searches/search", class: "ml-10" %></li>
             <% if user_signed_in? %>
             <!--追加-->
             <li class="nav-item">
@@ -30,13 +31,20 @@
             </li>
             <!--ここまで-->
             <li class="nav-item">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+              <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
               <%= link_to '投稿フォーム', new_tweet_path, class: 'nav-link text-dark' %>
             </li>
+
             <li class="nav-item">
-              <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark' %>
+              <%= link_to "投稿一覧", tweets_path, class: "nav-link text-dark" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ユーザー一覧", users_path, class: "nav-link text-dark" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
             </li>
             <% else %>
             <li class="nav-item">

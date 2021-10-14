@@ -45,4 +45,20 @@ class Tweet < ApplicationRecord
     end
   end
 
+  #サーチ
+
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @tweet = Tweet.where("title LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @tweet = Tweet.where("title LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @tweet = Tweet.where("title LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @tweet = Tweet.where("title LIKE?","%#{word}%")
+    else
+      @tweet = Tweet.all
+    end
+  end
+
 end

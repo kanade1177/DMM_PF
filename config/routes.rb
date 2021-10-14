@@ -8,15 +8,13 @@ Rails.application.routes.draw do
   get "search" => "searches#search"
 
   resources :tweets do
+    #試し
+
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end
 
   resources :users do
-    #試してるやつ
-    # member do
-    #   get :following, :followers
-    # end
     #元々のやつ
     resource :relationships, only: [:create, :destroy]
     get :follows, on: :member
