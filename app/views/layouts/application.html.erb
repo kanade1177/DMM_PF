@@ -24,27 +24,37 @@
             <!--追加-->
             <li class="nav-item">
                <% if unchecked_notifications.any? %>
-                 <li><%= link_to "Notice",notifications_path, class: " fas fa-bell nav-link text-dark",style: "color:tomato;"%>
+                 <li><%= link_to "通知",notifications_path, class: " fas fa-bell nav-link text-dark",style: "color:tomato;"%>
               <% else %>
-                 <li><%= link_to "Notice",notifications_path, class: " fas fa-check nav-link text-dark"%>
+                 <li><%= link_to "通知",notifications_path, class: " fas fa-check nav-link text-dark"%>
               <% end %>
             </li>
             <!--ここまで-->
             <li class="nav-item">
-              <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark' %>
+              <%= link_to user_path(current_user.id), class: 'btn  btn-outline-dark ml-3', method: :get do %>
+               <i class="fas fa-home"></i>
+              <% end  %>
             </li>
             <li class="nav-item">
-              <%= link_to '投稿フォーム', new_tweet_path, class: 'nav-link text-dark' %>
+              <%= link_to new_tweet_path, class: 'btn  btn-outline-dark ml-3', method: :get do %>
+               <i class="fas fa-edit"></i>
+              <% end %>
             </li>
 
             <li class="nav-item">
-              <%= link_to "投稿一覧", tweets_path, class: "nav-link text-dark" %>
+              <%= link_to tweets_path, class: "btn  btn-outline-dark ml-3", method: :get do %>
+                <i class="far fa-list-alt"></i>
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "ユーザー一覧", users_path, class: "nav-link text-dark" %>
+              <%= link_to users_path, class: "btn  btn-outline-dark ml-3", method: :get do %>
+                <i class="fas fa-users"></i>
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+              <%= link_to destroy_user_session_path, class: "btn  btn-outline-dark ml-3" , method: :delete do %>
+                <i class="fas fa-sign-out-alt"></i>
+              <% end %>
             </li>
             <% else %>
             <li class="nav-item">
