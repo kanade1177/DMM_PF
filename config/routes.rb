@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get "search" => "searches#search"
 
+  get "/tweets/category/:id" => "tweets#category"
+
   resources :tweets do
     #試し
 

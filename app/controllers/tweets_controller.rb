@@ -38,6 +38,11 @@ class TweetsController < ApplicationController
   def destroy
   end
 
+  def category
+   @tweets = Tweet.where(category_id: params[:id]).order("created_at DESC") #追記
+   @tweet = Tweet.find_by(category_id: params[:id]) #追記
+  end
+
 
 
   private
