@@ -1,14 +1,12 @@
-<h1>Users#show</h1>
-
 <div class="container">
  <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-3 mt-4">
    <!--元々のやつ-->
    <%= render "users/user_info", user: @user %>
 
    <%= render "users/follow_form", user: @user %>
   </div>
-  <div class="col-md-8 offset-md-1">
+  <div class="col-md-8 offset-md-1 mt-4">
   <h2>Tweet</h2>
 
    <table class="table table-borderless">
