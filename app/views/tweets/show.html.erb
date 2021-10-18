@@ -1,49 +1,82 @@
 <div class="container">
  <div class="row">
-  <div class="col-md-3">
-   <%= render "users/user_info", user: @user %>
-  </div>
-  <div class="col-md-4">
-    <%= attachment_image_tag @tweet, :post_image, :fill, 300, 300, format: 'jpeg' %>
-  </div>
-  <div class="col-md-5">
-    <h2>Tweet</h2>
+  <!--<div class="col-md-3 mt-4">-->
+  <!-- <%#= render "users/user_info", user: @user %>-->
+  <!--</div>-->
+  <!--<div class="col-md-6 mt-4">-->
+  <!--  <%#= attachment_image_tag @tweet, :post_image, :fill, 500, 300, format: 'jpeg' %>-->
+  <!--</div>-->
 
-    <table class="table">
-     <thead>
-      <tr>
-        <th>Title</th>
-        <th>Erea</th>
-        <th>category</th>
-      </tr>
-     <tbody>
-      <tr>
-       <td>
-        <%= @tweet.title %>
-       </td>
-       <td>
-        <%= @tweet.erea.name %>
-       </td>
-       <td>
-        <%= @tweet.category.name %>
-       </td>
-       <td>
-        <i class="far fa-clock clock-icon"><%= time_ago_in_words(@tweet.created_at) %>前</i>
-       </td>
-      </tr>
-     </tbody>
-    </table>
-    <div class="row">
-     <div class="col-md-4">
-     <p><%= @tweet.body %></p>
+  <div class="col-md-6 mt-4">
+    <div class="card mb-3">
+     <%= attachment_image_tag @tweet, :post_image, :fill, 500, 300, format: 'jpeg', class: "card-img-top" %>
+      <div class="card-body">
+       <h5 class="card-title"><%= @tweet.title %></h5>
+       <p class="card-text"><%= @tweet.body %></p>
+       <p class="card-text">
+        <%= link_to user_path(@tweet.user.id) do %>
+         <%= attachment_image_tag @tweet.user, :profile_image, format: "jpeg", size: "50x50",class: "img-fluid rounded-circle" %>
+        <% end %>
+        <span>
+         <%= link_to user_path(@tweet.user.id), class: "text-dark" do %>
+          <%= @tweet.user.name %>
+         <% end %>
+        </span>
+       </p>
+       <p class="card-text">
+        <small>
+         <%= @tweet.erea.name %>
+        </small>
+        <small>
+         <%= @tweet.category.name %>
+        </small>
+        <small class="far fa-clock clock-icon text-muted">
+         <%= time_ago_in_words(@tweet.created_at) %>前
+        </small>
 
-     </div>
+       </p>
+      </div>
     </div>
-    <div class="row">
+  </div>
+
+  <!--<div class="col-md-6 mt-4">-->
+  <!--  <h2>Tweet</h2>-->
+
+  <!--  <table class="table">-->
+  <!--   <thead>-->
+  <!--    <tr>-->
+  <!--      <th>Title</th>-->
+  <!--      <th>Erea</th>-->
+  <!--      <th>category</th>-->
+  <!--    </tr>-->
+  <!--   <tbody>-->
+  <!--    <tr>-->
+  <!--     <td>-->
+  <!--      <%#= @tweet.title %>-->
+  <!--     </td>-->
+  <!--     <td>-->
+  <!--      <%#= @tweet.erea.name %>-->
+  <!--     </td>-->
+  <!--     <td>-->
+  <!--      <%#= @tweet.category.name %>-->
+  <!--     </td>-->
+  <!--     <td>-->
+  <!--      <i class="far fa-clock clock-icon"><%#= time_ago_in_words(@tweet.created_at) %>前</i>-->
+  <!--     </td>-->
+  <!--    </tr>-->
+  <!--   </tbody>-->
+  <!--  </table>-->
+  <!--  <div class="row">-->
+  <!--   <div class="col-md-4">-->
+  <!--   <p><%#= @tweet.body %></p>-->
+
+  <!--   </div>-->
+  <!--  </div>-->
+    <div class="row mt-4 ml-5">
      <ul>
-      <li class="comment-create">
-       <h7 class="test-left title">コメント</h7>
-      </li>
+      <!--<li class="comment-create">-->
+      <!-- <h7 class="test-left title">コメント</h7>-->
+      <!--</li>-->
       <li>
        <div id="comments_area">
        <%= render partial: "comments/index", locals: { commetns: @comments, tweet: @tweet } %>
@@ -59,4 +92,12 @@
      <% end %>
     </div>
  </div>
+
+ <!--<div class="row">-->
+ <!-- <div class="col-md-12">-->
+ <!--  <%#= render "users/tweet_user_info", user: @user %>-->
+ <!-- </div>-->
+ <!--</div>-->
+
+
 </div>

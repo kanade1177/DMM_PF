@@ -1,33 +1,40 @@
-<h1>新規投稿</h1>
 <%= form_with model: @tweet, local: true do |f| %>
+<body>
+  <main>
+    <div class="container">
+      <h2 class="fas fa-edit mt-4">新規投稿</h2>
 
-  <div>
-    <label>Foto</label>
-    <%= f.attachment_field :post_image %>
-  </div>
+        <div class="form-inline form-group row mt-5">
+          <%= f.label :"画像", class: "col-3 control-label" %>
+          <%= f.attachment_field :post_image %>
+        </div>
 
-  <div>
-    <label>Category</label>
-    <%= f.collection_select :category_id, Category.all, :id, :name, prompt: "-- 選択してください--" %>
-  </div>
-  
-  <div>
-    <label>Erea</label>
-    <%= f.collection_select :erea_id, Erea.all, :id, :name, prompt: "-- 選択してください--" %>
-  </div>
+        <div class="form-inline form-group row mt-5">
+          <%= f.label :"カテゴリー", class: "col-3 control-label" %>
+          <%= f.collection_select :category_id, Category.all, :id, :name, prompt: "-- 選択してください--" %>
+        </div>
 
-  <div>
-    <label>Title</label>
-    <%= f.text_field :title, class: "form-control" %>
-  </div>
+        <div class="form-inline form-group row mt-5">
+          <%= f.label :"地域", class: "col-3 control-label" %>
+          <%= f.collection_select :erea_id, Erea.all, :id, :name, prompt: "-- 選択してください--" %>
+        </div>
 
-  <div>
-    <label>Opinion</label>
-    <%= f.text_area :body, class: "form-control" %>
-  </div>
+        <div class="form-inline form-group row mt-5">
+          <%= f.label :"タイトル", class: "col-3 control-label" %>
+          <%= f.text_field :title, autofocus: true, class: "col-sm-7 form-control" %>
+        </div>
 
-  <div>
-    <%= f.submit "投稿", class: "btn btn-success" %>
-  </div>
+        <div class="form-inline form-group row mt-5">
+          <%= f.label :"投稿内容", class: "col-3 control-label" %>
+          <%= f.text_area :body, class: "col-sm-7 form-control", id: "input-text", :placeholder =>"280字以内" %>
+        </div>
 
+        <div class="form-inline form-group row mt-5">
+          <%= f.submit "投稿", class: "btn btn-success" %>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</body>
 <% end %>

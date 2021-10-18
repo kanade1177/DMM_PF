@@ -1,0 +1,25 @@
+<div class="profile-container">
+  <%#= attachment_image_tag user, :profile_image, :fill, 45, 45, format: "jpeg",class: "img-fluid rounded-circle" %>
+   <div class="row">
+     <div class="col-md-12 offset-md-1">
+       <table class="table table-hover table-invers table-borderless mt-4">
+         <thead>
+           <tr>
+             <th></th>
+             <th>Name</th>
+             <th>Intro</th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr>
+             <td><%= attachment_image_tag user, :profile_image, :fill, 45, 45, format: "jpeg",class: "img-fluid rounded-circle" %></td>
+             <!--<th>name</th>-->
+             <td><%= user.name %></td>
+             <!--<th>introduction</th>-->
+             <td><%= user.introduction %></td>
+           </tr>
+         </tbody>
+       </table>
+      </div>
+    </div>
+ </div>

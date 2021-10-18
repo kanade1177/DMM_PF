@@ -5,12 +5,28 @@
      <tbody>
        <tr></tr>
        <tr>
-         <th>name</th>
+         <!--<th>name</th>-->
          <th><%= user.name %></th>
        </tr>
        <tr>
-         <th>introduction</th>
+         <th><%= user.followings.count %> フォロー
+          <span>
+           <%= user.followers.count %> フォロワー
+          </span>
+         </th>
+       </tr>
+       <tr>
+         <!--<th>introduction</th>-->
          <th><%= user.introduction %></th>
+       </tr>
+       <tr>
+        <th>
+        <% if user.id==current_user.id %>
+        <%= link_to edit_user_path(current_user.id), class: "btn btn-outline-dark btn-block",  method: :get do %>
+         <i class="fas fa-users-cog"></i>
+        <% end %>
+        <% end %>
+        </th>
        </tr>
      </tbody>
    </table>

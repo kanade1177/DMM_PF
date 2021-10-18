@@ -2,9 +2,13 @@
 <% if current_user != user %>
  <div id="follow_form">
   <% if user.followed_by?(current_user) %>
-    <%=link_to "フォロー済み", user_relationships_path(user.id), method: :delete, remote: :true %>
+    <%=link_to user_relationships_path(user.id), class: "btn btn-outline-dark btn-block", method: :delete, remote: :true do %>
+     <i class="fas fa-calendar-check"></i>フォロー済み
+    <% end %>
   <% else %>
-    <%=link_to "フォローする", user_relationships_path(user.id), method: :post, remote: :true %>
+    <%=link_to user_relationships_path(user.id), class: "btn btn-outline-dark btn-block", method: :post, remote: :true do %>
+     <i class="far fa-calendar-check"></i>フォロー
+    <% end %>
   <% end %>
  </div>
 <% end %>
