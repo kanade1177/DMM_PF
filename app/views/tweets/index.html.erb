@@ -63,7 +63,7 @@
       <div class="card-body">
        <h5 class="card-title">
         <%= link_to tweet_path(tweet.id), class: "text-dark" do %>
-         <%= tweet.title %>
+         <strong><%= tweet.title %></strong>
         <% end %>
        </h5>
        <p class="card-text">
@@ -93,6 +93,7 @@
       </div>
     </div>
    <% end %>
+   <%= paginate @tweets %>
   </div>
 
  </div>

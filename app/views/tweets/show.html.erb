@@ -19,7 +19,7 @@
         <% end %>
         <span>
          <%= link_to user_path(@tweet.user.id), class: "text-dark" do %>
-          <%= @tweet.user.name %>
+          <strong><%= @tweet.user.name %></strong>
          <% end %>
         </span>
        </p>

@@ -21,10 +21,14 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
     get :follows, on: :member
     delete :followers, on: :member
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
 
    end
-  resources :relationships, only: [:create, :destroy]
-
+  # resources :relationships, only: [:create, :destroy] do
+  # get 'followings' => 'relationships#followings', as: 'followings'
+  # get 'followers' => 'relationships#followers', as: 'followers'
+  # end
 
   resources :notifications, only: [:index, :destroy]
 

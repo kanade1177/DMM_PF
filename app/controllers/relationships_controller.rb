@@ -7,7 +7,7 @@ class RelationshipsController < ApplicationController
       @user.create_notification_follow!(current_user)
 
     end
-    
+
     redirect_to request.referer
   end
 
@@ -15,8 +15,16 @@ class RelationshipsController < ApplicationController
     #元々のやつ
     Relationship.find_by(params[:user_id]).destroy
     redirect_to request.referer
-
-
-
   end
+
+  def followings
+     user = User.find(params[:user_id])
+     @users = user.followings.page(params[:page]).per(20)
+  end
+
+  def followers
+     user = User.find(params[:user_id])
+     @users = user.followers.page(params[:page]).per(20)
+  end
+
 end

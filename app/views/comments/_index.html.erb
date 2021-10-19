@@ -7,10 +7,12 @@
   <li class="comment-container">
     <div class="comment-box">
       <div calss="comment-avatar">
-        <%= attachment_image_tag comment.user, :profile_image, class:"comment-image", size: "40x40" %>
+       <%= link_to user_path(@tweet.user.id) do %>
+        <%= attachment_image_tag comment.user, :profile_image, class:"comment-image img-fluid rounded-circle", size: "50x50" %>
+       <% end %>
       </div>
       <div class="commet-text">
-        <p><%= link_to "@#{comment.user.name}",user_path(comment.user.id) %></p>
+        <strong><p><%= link_to "@#{comment.user.name}",user_path(comment.user.id), class: "text-dark" %></p></strong>
         <div class="comment-entry">
           <%= comment.content %>
           <% if comment.user == current_user %>
@@ -36,10 +38,12 @@
       <li class="comment-container">
         <div class="comment-box">
           <div calss="comment-avatar">
-           <%= attachment_image_tag comment.user, :profile_image, class:"comment-image", size: "40x40" %>
+           <%= link_to user_path(@tweet.user.id) do %>
+            <%= attachment_image_tag comment.user, :profile_image, class:"comment-image img-fluid rounded-circle", size: "50x50" %>
+           <% end %>
           </div>
           <div class="commen-text">
-            <p><%= link_to "@#{comment.user.name}", user_path(comment.user.id) %></p>
+            <strong><p><%= link_to "@#{comment.user.name}", user_path(comment.user.id), class: "text-dark" %></p></strong>
             <div class="comment-entry">
               <%= comment.content %>
               <% if comment.user == current_user %>

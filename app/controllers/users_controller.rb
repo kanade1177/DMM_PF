@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.page(params[:page]).per(20)
     @tweet = Tweet.new
   end
 
   def show
     @user = User.find(params[:id])
-     @tweets = @user.tweets
+     @tweets = @user.tweets.order(created_at: :desc)
     # @tweet = Tweet.new
   end
 
