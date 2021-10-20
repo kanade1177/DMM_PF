@@ -12,7 +12,6 @@ class RelationshipsController < ApplicationController
   end
 
   def destroy
-    #元々のやつ
     Relationship.find_by(params[:user_id]).destroy
     redirect_to request.referer
   end

@@ -9,6 +9,8 @@ class TweetsController < ApplicationController
 
   def show
     @tweet = Tweet.find(params[:id])
+    #マップ用
+    gon.tweet = @tweet
     @user = @tweet.user
     @comment = Comment.new
     #新着順
@@ -48,7 +50,7 @@ class TweetsController < ApplicationController
   private
 
     def tweet_params
-      params.require(:tweet).permit(:title, :body, :post_image, :category_id, :erea_id)
+      params.require(:tweet).permit(:title, :body, :post_image, :category_id, :erea_id, :address, :latitude, :longitude)
     end
 
 

@@ -5,6 +5,9 @@ class Tweet < ApplicationRecord
   has_many :favorites
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
+  
+  geocoded_by :address #マップ用
+  after_validation :geocode, if: :address_changed? #マップ用
 
 
 
