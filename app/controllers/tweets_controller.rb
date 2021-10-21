@@ -38,6 +38,10 @@ class TweetsController < ApplicationController
   end
 
   def destroy
+    @tweet = Tweet.find(params[:id])
+    @tweet.destroy
+    redirect_to action: :index
+
   end
 
   def category
