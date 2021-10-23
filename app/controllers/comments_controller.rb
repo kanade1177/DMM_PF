@@ -6,19 +6,16 @@ class CommentsController < ApplicationController
     # @comment = current_user.comments.new(comment_params)
     @comment.tweet_id = @tweet.id
     if @comment.save
-    #通知機能用
+      # 通知機能用
       @tweet = @comment.tweet
       @tweet.create_notification_by(current_user)
     end
-
-
   end
 
   def destroy
     @tweet = Tweet.find(params[:tweet_id])
     @comment = @tweet.comments.find(params[:id])
     @comment.destroy
-
   end
 
   private
@@ -26,5 +23,4 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:content, :tweet_id, :user_id)
   end
-
 end

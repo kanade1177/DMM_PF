@@ -9,11 +9,11 @@ class TweetsController < ApplicationController
 
   def show
     @tweet = Tweet.find(params[:id])
-    #マップ用
+    # マップ用
     gon.tweet = @tweet
     @user = @tweet.user
     @comment = Comment.new
-    #新着順
+    # 新着順
     @comments = @tweet.comments.order(created_at: :desc)
   end
 
@@ -21,9 +21,9 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
     if @tweet.save
-     redirect_to tweets_path
+      redirect_to tweets_path
     else
-     render :new
+      render :new
     end
   end
 
@@ -32,7 +32,7 @@ class TweetsController < ApplicationController
   end
 
   def update
-   @tweet = Tweet.find(params[:id])
+    @tweet = Tweet.find(params[:id])
     if @tweet.update(tweet_params)
       redirect_to tweet_path(@tweet.id)
     else
@@ -44,23 +44,16 @@ class TweetsController < ApplicationController
     @tweet = Tweet.find(params[:id])
     @tweet.destroy
     redirect_to action: :index
-
   end
 
   def category
-   @tweets = Tweet.where(category_id: params[:id]).order("created_at DESC") #追記
-   @tweet = Tweet.find_by(category_id: params[:id]) #追記
+    @tweets = Tweet.where(category_id: params[:id]).order("created_at DESC") # 追記
+    @tweet = Tweet.find_by(category_id: params[:id]) # 追記
   end
-
-
 
   private
 
-    def tweet_params
-      params.require(:tweet).permit(:title, :body, :post_image, :category_id, :erea_id, :address, :latitude, :longitude)
-    end
-
-
-
+  def tweet_params
+    params.require(:tweet).permit(:title, :body, :post_image, :category_id, :erea_id, :address, :latitude, :longitude)
+  end
 end
-

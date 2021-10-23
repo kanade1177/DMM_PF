@@ -3,17 +3,15 @@ class FavoritesController < ApplicationController
     @tweet = Tweet.find(params[:tweet_id])
     favorite = current_user.favorites.new(tweet_id: @tweet.id)
     if favorite.save
-    #通知機能
+      # 通知機能
       @tweet = favorite.tweet
       @tweet.create_notification_favorite!(current_user)
     end
-
   end
 
   def destroy
     @tweet = Tweet.find(params[:tweet_id])
     favorite = current_user.favorites.find_by(tweet_id: @tweet.id)
     favorite.destroy
-    
   end
 end
