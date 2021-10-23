@@ -22,9 +22,10 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-              <li><%= render "searches/search", class: "ml-10" %></li>
+
             <% if user_signed_in? %>
             <!--追加-->
+            <li><%= render "searches/search", class: "ml-10" %></li>
             <li class="nav-item">
                <% if unchecked_notifications.any? %>
                  <li><%= link_to "通知",notifications_path, class: " fas fa-bell nav-link text-dark",style: "color:tomato;"%>
@@ -61,10 +62,14 @@
             </li>
             <% else %>
             <li class="nav-item">
-              <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
+              <%= link_to new_user_registration_path, class: "btn  btn-outline-dark ml-3", method: :get do %>
+                <i class="fas fa-sign-in-alt"></i>
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %>
+              <%= link_to new_user_session_path, class: "btn  btn-outline-dark ml-3", method: :get do %>
+                <i class="fas fa-user-check"></i>
+              <% end %>
             </li>
             <% end %>
             </ul>

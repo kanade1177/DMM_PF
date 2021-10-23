@@ -5,7 +5,7 @@ class Tweet < ApplicationRecord
   has_many :favorites
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
-  
+
   geocoded_by :address #マップ用
   after_validation :geocode, if: :address_changed? #マップ用
 
@@ -14,6 +14,11 @@ class Tweet < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
   belongs_to_active_hash :erea
+
+
+  validates :title, presence: true
+  validates :body, presence: true
+  validates :address, presence: true
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

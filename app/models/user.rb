@@ -24,6 +24,10 @@ class User < ApplicationRecord
     # 自分宛の通知関連
    has_many :passive_notifications, class_name: "Notification", foreign_key: :visited_id, dependent: :destroy
 
+   validates :name, presence: true
+   validates :introduction, presence: true, on: :update
+   validates :profile_image_id, presence: true, on: :update
+
    # 元々のやつ
    def followed_by?(user)
      passive_relationships.find_by(following_id: user.id).present?
@@ -52,7 +56,7 @@ class User < ApplicationRecord
     else
       @user = User.all
     end
-   end 
+   end
 
 
 

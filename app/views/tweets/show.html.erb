@@ -1,22 +1,15 @@
 <div class="container">
  <div class="row">
-  <!--<div class="col-md-3 mt-4">-->
-  <!-- <%#= render "users/user_info", user: @user %>-->
-  <!--</div>-->
-  <!--<div class="col-md-6 mt-4">-->
-  <!--  <%#= attachment_image_tag @tweet, :post_image, :fill, 500, 300, format: 'jpeg' %>-->
-  <!--</div>-->
-
   <div class="col-md-6 mt-4">
     <div class="card mb-3">
-     <%= attachment_image_tag @tweet, :post_image, :fill, 500, 300, format: 'jpeg', class: "card-img-top" %>
+     <%= attachment_image_tag @tweet, :post_image, :fill, 500, 300, format: 'jpeg', fallback: "no_image.jpg",class: "card-img-top" %>
       <div class="card-body">
        <h5 class="card-title"><%= @tweet.title %></h5>
        <p class="card-text"><%= @tweet.body %></p>
        <p class="card-text"></p>
        <p class="card-text">
         <%= link_to user_path(@tweet.user.id) do %>
-         <%= attachment_image_tag @tweet.user, :profile_image, format: "jpeg", size: "50x50",class: "img-fluid rounded-circle" %>
+         <%= attachment_image_tag @tweet.user, :profile_image, format: "jpeg", size: "50x50",fallback: "no_user.jpg",class: "img-fluid rounded-circle" %>
         <% end %>
         <span>
          <%= link_to user_path(@tweet.user.id), class: "text-dark" do %>
@@ -38,15 +31,15 @@
        <p class="card-test">
         <div class="row mt-4 ml-5">
          <div id="map"></div>
-         
-         
+
+
          <script>
            let map;
-         
+
            function initMap() {
              // geocoderを初期化
              geocoder = new google.maps.Geocoder()
-         
+
              map = new google.maps.Map(document.getElementById('map'), {
                // コントローラーで定義した変数から緯度経度を呼び出し、マップの中心に表示
                center: {
@@ -56,7 +49,7 @@
                // マップの倍率
                zoom: 17,
              });
-         
+
              marker = new google.maps.Marker({
                // コントローラーで定義した変数から緯度経度を呼び出し、マーカーを立てる
                position: {
@@ -67,56 +60,20 @@
              });
            }
          </script>
-         
+
          <script async defer
                src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GMAP_API2'] %>&callback=initMap">
          </script>
-         
+
          </div>
        </p>
       </div>
     </div>
   </div>
 
-  <!--<div class="col-md-6 mt-4">-->
-  <!--  <h2>Tweet</h2>-->
-
-  <!--  <table class="table">-->
-  <!--   <thead>-->
-  <!--    <tr>-->
-  <!--      <th>Title</th>-->
-  <!--      <th>Erea</th>-->
-  <!--      <th>category</th>-->
-  <!--    </tr>-->
-  <!--   <tbody>-->
-  <!--    <tr>-->
-  <!--     <td>-->
-  <!--      <%#= @tweet.title %>-->
-  <!--     </td>-->
-  <!--     <td>-->
-  <!--      <%#= @tweet.erea.name %>-->
-  <!--     </td>-->
-  <!--     <td>-->
-  <!--      <%#= @tweet.category.name %>-->
-  <!--     </td>-->
-  <!--     <td>-->
-  <!--      <i class="far fa-clock clock-icon"><%#= time_ago_in_words(@tweet.created_at) %>前</i>-->
-  <!--     </td>-->
-  <!--    </tr>-->
-  <!--   </tbody>-->
-  <!--  </table>-->
-  <!--  <div class="row">-->
-  <!--   <div class="col-md-4">-->
-  <!--   <p><%#= @tweet.body %></p>-->
-
-  <!--   </div>-->
-  <!--  </div>-->
     <div class="row mt-4 ml-5">
 
      <ul>
-      <!--<li class="comment-create">-->
-      <!-- <h7 class="test-left title">コメント</h7>-->
-      <!--</li>-->
       <li>
        <div id="comments_area">
        <%= render partial: "comments/index", locals: { commetns: @comments, tweet: @tweet } %>
@@ -135,48 +92,6 @@
 
  </div>
 
- <!--<div class="row">-->
- <!-- <div class="col-md-12">-->
- <!--  <%#= render "users/tweet_user_info", user: @user %>-->
- <!-- </div>-->
- <!--</div>-->
-<!--マップ用-->
-<!--<div class="row mt-4 ml-5">-->
-<!--<div id="map"></div>-->
 
-
-<!--<script>-->
-<!--  let map;-->
-
-<!--  function initMap() {-->
-
-<!--    geocoder = new google.maps.Geocoder()-->
-
-<!--    map = new google.maps.Map(document.getElementById('map'), {-->
-
-<!--      center: {-->
-<!--        lat: gon.tweet.latitude,-->
-<!--        lng: gon.tweet.longitude-->
-<!--      },-->
-
-<!--      zoom: 17,-->
-<!--    });-->
-
-<!--    marker = new google.maps.Marker({-->
-
-<!--      position: {-->
-<!--        lat: gon.tweet.latitude,-->
-<!--        lng: gon.tweet.longitude-->
-<!--      },-->
-<!--      map: map-->
-<!--    });-->
-<!--  }-->
-<!--</script>-->
-
-<!--<script async defer-->
-<!--      src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<#%= ENV['GMAP_API2'] %>&callback=initMap">-->
-<!--</script>-->
-
-<!--</div>-->
 </div>
 

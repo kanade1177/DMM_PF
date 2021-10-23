@@ -81,3 +81,5 @@ end
 gem 'dotenv-rails'
 gem 'gon'
 gem 'geocoder'
+
+gem 'rails-i18n'

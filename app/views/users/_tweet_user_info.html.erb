@@ -12,7 +12,7 @@
          </thead>
          <tbody>
            <tr>
-             <td><%= attachment_image_tag user, :profile_image, :fill, 45, 45, format: "jpeg",class: "img-fluid rounded-circle" %></td>
+             <td><%= attachment_image_tag user, :profile_image, :fill, 45, 45, format: "jpeg",fallback: "no_user.jpg",class: "img-fluid rounded-circle" %></td>
              <!--<th>name</th>-->
              <td><%= user.name %></td>
              <!--<th>introduction</th>-->
