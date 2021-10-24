@@ -1,4 +1,4 @@
-<h2>検索結果</h2>
+
 <% if @range == "User" %>
   <body>
 <div class="container">
@@ -11,7 +11,7 @@
       <div class="text-center card-body column flex-direction:row">
 
           <div>
-              <!--<img src="../assets/images/users/user-10.jpg" class="rounded-circle avatar-xl img-thumbnail mb-2" alt="profile-image">-->
+              
               <%= link_to user_path(user.id) do %>
                <%= attachment_image_tag user, :profile_image, format: "jpeg", size: "60x60",fallback: "no_user.jpg",class: "rounded-circle avatar-xl img-thumbnail mb-2",alt: "profile-image" %>
               <% end %>
