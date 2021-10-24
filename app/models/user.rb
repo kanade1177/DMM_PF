@@ -24,9 +24,9 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :introduction, presence: true, on: :update
-  validates :profile_image_id, presence: true, on: :update
 
-  # 元々のやつ
+
+  
   def followed_by?(user)
     passive_relationships.find_by(following_id: user.id).present?
   end
