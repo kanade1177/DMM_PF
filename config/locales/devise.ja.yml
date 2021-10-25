@@ -28,6 +28,7 @@ ja:
     models:
       user: ユーザー
       tweet: ツイート
+      comment: コメント
     attributes:
       user:
         name: アカウント名・団体名
@@ -39,6 +40,8 @@ ja:
         title: タイトル
         body: 投稿内容
         address: 活動場所
+      comment:
+        content: コメント
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。
