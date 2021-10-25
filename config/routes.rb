@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "homes#top"
 
-
   get "search" => "searches#search"
 
   get "/tweets/category/:id" => "tweets#category"
@@ -13,7 +12,6 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-    
     resource :relationships, only: [:create, :destroy]
     get :follows, on: :member
     delete :followers, on: :member

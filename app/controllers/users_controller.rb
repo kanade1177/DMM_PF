@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :correct_user, only: [:edit]
 
-
   def index
     @users = User.page(params[:page]).per(20)
     @tweet = Tweet.new
@@ -37,6 +36,4 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
-
-
 end

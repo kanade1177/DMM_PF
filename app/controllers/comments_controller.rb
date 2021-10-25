@@ -3,7 +3,6 @@ class CommentsController < ApplicationController
     @tweet = Tweet.find(params[:tweet_id])
     @comment = @tweet.comments.build(comment_params)
     @comment.user_id = current_user.id
-    # @comment = current_user.comments.new(comment_params)
     @comment.tweet_id = @tweet.id
     if @comment.save
       # 通知機能用

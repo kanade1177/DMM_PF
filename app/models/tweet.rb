@@ -14,7 +14,7 @@ class Tweet < ApplicationRecord
   belongs_to_active_hash :erea
 
   validates :title, presence: true
-  validates :body, presence: true,length: { minimum: 1, maximum: 280 }
+  validates :body, presence: true, length: { minimum: 1, maximum: 280 }
   validates :address, presence: true
 
   def favorited_by?(user)
