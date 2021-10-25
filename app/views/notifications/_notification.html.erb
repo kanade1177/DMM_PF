@@ -1,14 +1,7 @@
 <% visiter = notification.visiter %>
 <% tweet = notification.tweet %>
 <!--コメントのみの時-->
-<!--<ul>-->
-<!--    <li><#%= link_to user_path(visiter) do %><strong><"%=visiter.name %><"% end %></strong>さんが-->
-<!--    <strong><#%= link_to tweet_path(notification.tweet_id) do %><"%= tweet.title%><"% end %></strong>にコメントしました。-->
-<!--    <"%= " (#{time_ago_in_words(notification.created_at)} 前)" %></li>-->
 
-<!--</ul>-->
-
-<!--変更-->
 
 <div class="user-view clearfix ">
   <%= link_to user_path(notification.visiter) do %>

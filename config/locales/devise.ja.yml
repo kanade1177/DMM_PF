@@ -37,7 +37,7 @@ ja:
       tweet:
         post_image_id: 画像
         title: タイトル
-        body: 活動内容
+        body: 投稿内容
         address: 活動場所
   devise:
     confirmations:

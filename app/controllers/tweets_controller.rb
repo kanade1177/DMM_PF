@@ -1,4 +1,6 @@
 class TweetsController < ApplicationController
+  before_action :ensure_correct_user, only: [:edit]
+
   def new
     @tweet = Tweet.new
   end
@@ -13,7 +15,6 @@ class TweetsController < ApplicationController
     gon.tweet = @tweet
     @user = @tweet.user
     @comment = Comment.new
-    # 新着順
     @comments = @tweet.comments.order(created_at: :desc)
   end
 
@@ -55,5 +56,12 @@ class TweetsController < ApplicationController
 
   def tweet_params
     params.require(:tweet).permit(:title, :body, :post_image, :category_id, :erea_id, :address, :latitude, :longitude)
+  end
+
+  def ensure_correct_user
+    @tweet = Tweet.find(params[:id])
+    unless @tweet.user == current_user
+      redirect_to tweets_path
+    end
   end
 end

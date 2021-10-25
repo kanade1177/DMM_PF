@@ -23,10 +23,10 @@ class User < ApplicationRecord
   has_many :passive_notifications, class_name: "Notification", foreign_key: :visited_id, dependent: :destroy
 
   validates :name, presence: true
-  validates :introduction, presence: true, on: :update
+  validates :introduction, presence: true,length: { minimum: 1, maximum: 160 }, on: :update
 
 
-  
+
   def followed_by?(user)
     passive_relationships.find_by(following_id: user.id).present?
   end

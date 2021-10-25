@@ -10,12 +10,11 @@
   <div class="container">
    <h2 class="fas fa-users-cog mt-4">登録情報編集</h2>
 
-   <!--<div class="row">-->
-   <!-- <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-xm-0 max-auto ">-->
 
-     <%#= form_with model: @user, local:true do |f| %>
+
+
       <div class="form-inline form-group row mt-5">
-       <!--<label>Name</label>-->
+
        <%= f.label :"アカウント名・団体名", class: "col-3 control-label" %>
        <%= f.text_field :name, autofocus: true, class: "col-sm-7 form-control", :placeholder =>"アカウント名・団体名など" %>
       </div>
@@ -28,16 +27,16 @@
       <div class="form-inline form-group row mt-5">
        <%= f.label :"紹介文", class: "col-3 control-label" %>
        <%= f.text_area :introduction, class: "col-sm-7 form-control", id: "input-text", :placeholder =>"160字以内" %>
-       <p id="counter">0文字</p>
+       <div class="mt-5">
+        <div id="counter">0文字</div>
+       </div>
       </div>
 
       <div class=" form-group row mt-5">
        <%= f.submit "Update User", class: "btn btn-outline-dark btn-lg btn-block" %>
       </div>
 
-     <%# end %>
-   <!-- </div>-->
-   <!--</div>-->
+
   </div>
  </main>
 </body>
