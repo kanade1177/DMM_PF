@@ -1,7 +1,7 @@
 <div class="container">
  <div class="row">
   <div class="col-md-6 mt-4">
-    <div class="card mb-3 shadow">
+    <div class="card mb-3 ">
      <%= attachment_image_tag @tweet, :post_image, :fill, 500, 300, format: 'jpeg', fallback: "no_image.jpg",class: "card-img-top" %>
       <div class="card-body">
        <h5 class="card-title"><%= @tweet.title %></h5>
@@ -72,7 +72,7 @@
   </div>
 
     <div class="row mt-4 ml-5">
-
+     
      <ul>
       <li>
        <div id="comments_area">
