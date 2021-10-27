@@ -11,7 +11,7 @@
       <div class="text-center card-body column flex-direction:row">
 
           <div>
-              
+
               <%= link_to user_path(user.id) do %>
                <%= attachment_image_tag user, :profile_image, format: "jpeg", size: "60x60",fallback: "no_user.jpg",class: "rounded-circle avatar-xl img-thumbnail mb-2",alt: "profile-image" %>
               <% end %>
@@ -52,7 +52,7 @@
    <% @tweets.each do | tweet | %>
     <div class="card mb-3">
      <%= link_to tweet_path(tweet.id) do %>
-      <%= attachment_image_tag tweet, :post_image, :fill, 150, 100, format: 'jpeg', fallback: "no_image.jpg",class: "card-img-top" %>
+      <%= attachment_image_tag tweet, :post_image, size: "150x400", format: 'jpeg', fallback: "no_image.jpg",class: "card-img-top" %>
      <% end %>
       <div class="card-body">
        <h5 class="card-title">
