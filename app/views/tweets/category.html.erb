@@ -1,9 +1,3 @@
-<!--<#% if @tweet >= 1 %>-->
-<!--<h2><#%= @tweet.category.name %></h2>-->
-<!--<#% else %>-->
-<!--<h2>投稿はありません</h2>-->
-<!--<#% end %>-->
-
 <div class="container">
  <div class="row">
   <div class="col-md-2"></div>
@@ -11,7 +5,7 @@
    <% @tweets.each do | tweet | %>
     <div class="card mb-3">
      <%= link_to tweet_path(tweet.id) do %>
-      <%= attachment_image_tag tweet, :post_image, :fill, 150, 100, format: 'jpeg', class: "card-img-top" %>
+      <%= attachment_image_tag tweet, :post_image, size: "150x400", format: 'jpeg', class: "card-img-top" %>
      <% end %>
       <div class="card-body">
        <h5 class="card-title">
