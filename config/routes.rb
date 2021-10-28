@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'chats/show'
   devise_for :users
   root to: "homes#top"
 
@@ -19,4 +20,7 @@ Rails.application.routes.draw do
     get 'followers' => 'relationships#followers', as: 'followers'
   end
   resources :notifications, only: [:index, :destroy]
+
+  get 'chat/:id', to: 'chats#show', as: 'chat'
+  resources :chats, only: [:create]
 end

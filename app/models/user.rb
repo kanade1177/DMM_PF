@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :tweets
   has_many :favorites
   has_many :comments
+  #チャット
+  has_many :user_rooms, dependent: :destroy
+  has_many :chats, dependent: :destroy
   # 元々のやつ
   # 自分がフォローしているユーザーとの関係
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id, dependent: :destroy
