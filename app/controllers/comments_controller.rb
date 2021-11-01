@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
     @comment.tweet_id = @tweet.id
     if @comment.save
       # 通知機能用
+      
       @tweet = @comment.tweet
       @tweet.create_notification_by(current_user)
     end
