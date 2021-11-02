@@ -22,6 +22,11 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
     if @tweet.save
+      #VisionAPI
+      tags = Vision.get_image_data(@tweet.post_image)
+      tags.each do |tag|
+        @tweet.tags.create(name: tag)
+      end
       redirect_to tweets_path
     else
       render :new
