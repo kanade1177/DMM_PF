@@ -25,8 +25,12 @@
        </p>
        <p class="card-text">
 
+        <% tweet.tags.each do |tag| %>
+           <span class="label"><%= tag.name %></span>
+         <% end %>
+
         <small>
-         <%= tweet.erea.name %>
+         #<%= tweet.erea.name %>
         </small>
         <small>
          <%= tweet.category.name %>
