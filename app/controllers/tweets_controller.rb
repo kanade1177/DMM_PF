@@ -11,7 +11,7 @@ class TweetsController < ApplicationController
 
   def show
     @tweet = Tweet.find(params[:id])
-    # マップ用の記述
+    # Googleマップ用の記述
     gon.tweet = @tweet
     @user = @tweet.user
     @comment = Comment.new
