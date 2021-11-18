@@ -17,6 +17,7 @@ class RelationshipsController < ApplicationController
   end
 
   def followings
+    #フォロー機能
     user = User.find(params[:user_id])
     @users = user.followings.page(params[:page]).per(20)
   end
