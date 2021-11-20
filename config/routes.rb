@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end
+  #通知機能
   resources :notifications, only: [:index, :destroy]
 
   get 'chat/:id', to: 'chats#show', as: 'chat'
