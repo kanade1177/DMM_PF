@@ -3,6 +3,4 @@
 // console.log("<%= @tweet.comments.inspect %>");
 
 $("#comments_area").html("<%= j(render "index", { comments: @comment.tweet.comments, tweet: @tweet }) %>")
-<!--location.reload()-->
-<!--投稿後空欄に-->
 $("textarea").val("")
