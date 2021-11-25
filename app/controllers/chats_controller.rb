@@ -1,8 +1,8 @@
 class ChatsController < ApplicationController
   def show
-     @user = User.find(params[:id])
-      rooms = current_user.user_rooms.pluck(:room_id)
-      user_rooms = UserRoom.find_by(user_id: @user.id, room_id: rooms)
+   @user = User.find(params[:id])
+   rooms = current_user.user_rooms.pluck(:room_id)
+   user_rooms = UserRoom.find_by(user_id: @user.id, room_id: rooms)
   #チャットルームの有無の確認
   if user_rooms.nil?
    @room = Room.new
