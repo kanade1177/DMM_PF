@@ -1,6 +1,2 @@
-//$("#comments_area").empty
-// console.log("111");
-// console.log("<%= @tweet.comments.inspect %>");
-
 $("#comments_area").html("<%= j(render "index", { comments: @comment.tweet.comments, tweet: @tweet }) %>")
 $("textarea").val("")
